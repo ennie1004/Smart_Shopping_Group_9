@@ -117,32 +117,21 @@ It also prints the number of A* nodes expanded and, when several inputs run, a s
 `run(path, key, repeat)` returns a dict with the same numbers if you want to plot or reuse them.
 Times depend on your machine; the ratios between the two algorithms are what matter.
 
-### Improve Greedy (`greedy_improve.py`)
-
-```
-python greedy_improve.py                         # all inputs
-python greedy_improve.py markets_input.json input5
-```
-
-Shows the distance and the gap to the optimal route (A*) after each step: plain Greedy, remove
-redundant stops, 2-opt, and multi-start (try every place as the first stop, then improve). Output is in
-English.
-
 ### Visualize (`visualize.py`)
 
 ```
-# map (Greedy and A* routes together)
+# map (Greedy and A* routes together), can replace input3 with any input from 1 to 5
 python visualize.py map                                   # interactive window, pick the input with buttons
-python visualize.py map --save out_dir                    # one PNG per input
+python visualize.py map --save out_dir                    # save one PNG per input
 python visualize.py map --input input3                    # a single input
 
-# trace of the A* algorithm only
-python visualize.py trace-astar --input input4            # interactive window, slider over steps
-python visualize.py trace-astar --input input4 --save out_dir
+# trace of the A* algorithm only, can replace input4 with any input from 1 to 5
+python visualize.py trace-astar --input input4                   # interactive window, slider over A* steps
+python visualize.py trace-astar --input input4 --save out_dir    # save one PNG per A* step
 
-# trace of the Greedy algorithm only
-python visualize.py trace-greedy --input input4           # interactive window, slider over steps
-python visualize.py trace-greedy --input input4 --save out_dir
+# trace of the Greedy algorithm only, can replace input4 with any input from 1 to 5
+python visualize.py trace-greedy --input input4                  # interactive window, slider over Greedy steps
+python visualize.py trace-greedy --input input4 --save out_dir   # save one PNG per Greedy step
 ```
 
 - `--input` defaults to `input4` for both trace modes; `map` draws all inputs when it is omitted.
