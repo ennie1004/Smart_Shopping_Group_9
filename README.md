@@ -4,6 +4,10 @@ Find the shortest route that buys every ingredient on a shopping list, then retu
 Each market/supermarket sells some of the ingredients. The project compares a **Greedy** search
 (always go to the nearest useful place) with **A\*** (optimal, with an admissible heuristic).
 
+## Presentation
+
+- Slides (Canva): https://canva.link/a3c56t7r2p2z4se
+
 ## Problem model
 
 - Start at **Home** `(0, 0)`, buy everything, and **return home**.
