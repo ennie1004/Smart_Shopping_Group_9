@@ -1,0 +1,1045 @@
+{
+  "_notes": {
+    "model": "Xuất phát từ Nhà (0,0), mua đủ nguyên liệu rồi quay về nhà. Khoảng cách Euclid (km). Ghé một nơi thì mua hết nguyên liệu còn thiếu mà nơi đó có.",
+    "h_admissible": "h(p,S)=d(p,N) nếu S rỗng; ngược lại max_{i in S} min_{m sells i} [d(p,m)+d(m,N)]  -> không đánh giá quá cao, A* luôn tối ưu",
+    "h_sum": "h(p,S)=d(p,N) nếu S rỗng; ngược lại sum_{i in S} min_{m sells i} [d(p,m)+d(m,N)]  -> KHÔNG admissible (cộng dồn trùng lặp), A* có thể không tối ưu"
+  },
+  "input1": {
+    "description": "Nhỏ: 5 nơi, 8 nguyên liệu (Greedy = tối ưu)",
+    "start": {
+      "name": "Nhà",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    "return_to_start": true,
+    "shopping_list": [
+      "Thịt heo",
+      "Cá",
+      "Rau muống",
+      "Cà chua",
+      "Trứng",
+      "Hành lá",
+      "Gạo",
+      "Nước mắm"
+    ],
+    "markets": [
+      {
+        "name": "Chợ Hoa Phượng",
+        "pos": [
+          2,
+          1
+        ],
+        "items": [
+          "Rau muống",
+          "Cà chua",
+          "Hành lá"
+        ]
+      },
+      {
+        "name": "Chợ Đầu Mối",
+        "pos": [
+          5,
+          2
+        ],
+        "items": [
+          "Thịt heo",
+          "Cá",
+          "Trứng"
+        ]
+      },
+      {
+        "name": "Siêu thị Xanh",
+        "pos": [
+          6,
+          5
+        ],
+        "items": [
+          "Gạo",
+          "Nước mắm",
+          "Trứng",
+          "Hành lá"
+        ]
+      },
+      {
+        "name": "Chợ Cầu",
+        "pos": [
+          8,
+          4
+        ],
+        "items": [
+          "Cá",
+          "Rau muống",
+          "Cà chua"
+        ]
+      },
+      {
+        "name": "Siêu thị Mini 24h",
+        "pos": [
+          1,
+          6
+        ],
+        "items": [
+          "Nước mắm",
+          "Trứng"
+        ]
+      }
+    ],
+    "reference": {
+      "optimal": {
+        "route": [
+          "Chợ Hoa Phượng",
+          "Chợ Đầu Mối",
+          "Siêu thị Xanh"
+        ],
+        "distance_km": 16.37
+      },
+      "greedy": {
+        "route": [
+          "Chợ Hoa Phượng",
+          "Chợ Đầu Mối",
+          "Siêu thị Xanh"
+        ],
+        "distance_km": 16.37
+      },
+      "astar_h_admissible": {
+        "route": [
+          "Chợ Hoa Phượng",
+          "Chợ Đầu Mối",
+          "Siêu thị Xanh"
+        ],
+        "distance_km": 16.37,
+        "expanded_nodes": 9
+      },
+      "astar_h_sum": {
+        "route": [
+          "Siêu thị Xanh",
+          "Chợ Cầu",
+          "Chợ Đầu Mối"
+        ],
+        "distance_km": 19.04,
+        "expanded_nodes": 5
+      }
+    }
+  },
+  "input2": {
+    "description": "Vừa: 7 nơi, 12 nguyên liệu (Greedy kém hơn A*)",
+    "start": {
+      "name": "Nhà",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    "return_to_start": true,
+    "shopping_list": [
+      "Thịt bò",
+      "Thịt gà",
+      "Tôm",
+      "Cá",
+      "Rau cải",
+      "Cà rốt",
+      "Khoai tây",
+      "Hành tây",
+      "Trứng",
+      "Sữa",
+      "Dầu ăn",
+      "Nước mắm"
+    ],
+    "markets": [
+      {
+        "name": "Chợ Sớm",
+        "pos": [
+          1,
+          2
+        ],
+        "items": [
+          "Rau cải",
+          "Cà rốt"
+        ]
+      },
+      {
+        "name": "Chợ Hải Sản",
+        "pos": [
+          6,
+          1
+        ],
+        "items": [
+          "Tôm",
+          "Cá"
+        ]
+      },
+      {
+        "name": "Chợ Trung Tâm",
+        "pos": [
+          5,
+          5
+        ],
+        "items": [
+          "Thịt bò",
+          "Thịt gà",
+          "Hành tây",
+          "Khoai tây",
+          "Rau cải"
+        ]
+      },
+      {
+        "name": "Siêu thị BigMart",
+        "pos": [
+          9,
+          7
+        ],
+        "items": [
+          "Thịt bò",
+          "Thịt gà",
+          "Tôm",
+          "Cá",
+          "Cà rốt",
+          "Khoai tây",
+          "Hành tây",
+          "Trứng",
+          "Sữa",
+          "Dầu ăn",
+          "Nước mắm"
+        ]
+      },
+      {
+        "name": "Cửa hàng Tiện Lợi",
+        "pos": [
+          2,
+          5
+        ],
+        "items": [
+          "Sữa",
+          "Dầu ăn",
+          "Trứng"
+        ]
+      },
+      {
+        "name": "Chợ Đông",
+        "pos": [
+          8,
+          3
+        ],
+        "items": [
+          "Cá",
+          "Khoai tây",
+          "Nước mắm",
+          "Dầu ăn"
+        ]
+      },
+      {
+        "name": "Chợ Nhỏ Góc Phố",
+        "pos": [
+          3,
+          1
+        ],
+        "items": [
+          "Hành tây",
+          "Cà rốt"
+        ]
+      }
+    ],
+    "reference": {
+      "optimal": {
+        "route": [
+          "Chợ Sớm",
+          "Cửa hàng Tiện Lợi",
+          "Chợ Trung Tâm",
+          "Chợ Đông",
+          "Chợ Hải Sản"
+        ],
+        "distance_km": 20.92
+      },
+      "greedy": {
+        "route": [
+          "Chợ Sớm",
+          "Chợ Nhỏ Góc Phố",
+          "Chợ Hải Sản",
+          "Chợ Đông",
+          "Chợ Trung Tâm",
+          "Cửa hàng Tiện Lợi"
+        ],
+        "distance_km": 22.29
+      },
+      "astar_h_admissible": {
+        "route": [
+          "Chợ Sớm",
+          "Cửa hàng Tiện Lợi",
+          "Chợ Trung Tâm",
+          "Chợ Đông",
+          "Chợ Hải Sản"
+        ],
+        "distance_km": 20.92,
+        "expanded_nodes": 25
+      },
+      "astar_h_sum": {
+        "route": [
+          "Siêu thị BigMart",
+          "Chợ Trung Tâm"
+        ],
+        "distance_km": 22.94,
+        "expanded_nodes": 4
+      }
+    }
+  },
+  "input3": {
+    "description": "Lớn: 10 nơi, 15 nguyên liệu (Greedy kém hơn A*)",
+    "start": {
+      "name": "Nhà",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    "return_to_start": true,
+    "shopping_list": [
+      "Thịt heo",
+      "Thịt bò",
+      "Thịt gà",
+      "Cá",
+      "Tôm",
+      "Mực",
+      "Rau muống",
+      "Cà chua",
+      "Bắp cải",
+      "Hành tây",
+      "Trứng",
+      "Gạo",
+      "Nước mắm",
+      "Dầu ăn",
+      "Sữa"
+    ],
+    "markets": [
+      {
+        "name": "Chợ Sáng",
+        "pos": [
+          1,
+          3
+        ],
+        "items": [
+          "Rau muống",
+          "Cà chua",
+          "Bắp cải"
+        ]
+      },
+      {
+        "name": "Chợ Cá Bến",
+        "pos": [
+          7,
+          1
+        ],
+        "items": [
+          "Cá",
+          "Tôm",
+          "Mực"
+        ]
+      },
+      {
+        "name": "Chợ Thịt Phố",
+        "pos": [
+          4,
+          6
+        ],
+        "items": [
+          "Thịt heo",
+          "Thịt bò",
+          "Thịt gà"
+        ]
+      },
+      {
+        "name": "Siêu thị Mega",
+        "pos": [
+          12,
+          9
+        ],
+        "items": [
+          "Thịt heo",
+          "Thịt bò",
+          "Thịt gà",
+          "Cá",
+          "Tôm",
+          "Rau muống",
+          "Bắp cải",
+          "Hành tây",
+          "Trứng",
+          "Gạo",
+          "Nước mắm",
+          "Dầu ăn",
+          "Sữa"
+        ]
+      },
+      {
+        "name": "Cửa hàng Tạp Hóa",
+        "pos": [
+          2,
+          1
+        ],
+        "items": [
+          "Gạo",
+          "Nước mắm",
+          "Dầu ăn"
+        ]
+      },
+      {
+        "name": "Chợ Đồi",
+        "pos": [
+          9,
+          6
+        ],
+        "items": [
+          "Cà chua",
+          "Hành tây",
+          "Trứng",
+          "Thịt gà"
+        ]
+      },
+      {
+        "name": "Siêu thị Mini",
+        "pos": [
+          3,
+          8
+        ],
+        "items": [
+          "Sữa",
+          "Trứng",
+          "Dầu ăn"
+        ]
+      },
+      {
+        "name": "Chợ Vườn",
+        "pos": [
+          6,
+          3
+        ],
+        "items": [
+          "Rau muống",
+          "Cà chua",
+          "Hành tây",
+          "Bắp cải"
+        ]
+      },
+      {
+        "name": "Chợ Hải Sản Đông",
+        "pos": [
+          11,
+          3
+        ],
+        "items": [
+          "Tôm",
+          "Mực",
+          "Cá",
+          "Nước mắm"
+        ]
+      },
+      {
+        "name": "Siêu thị Sữa & Trứng",
+        "pos": [
+          8,
+          9
+        ],
+        "items": [
+          "Sữa",
+          "Trứng",
+          "Gạo"
+        ]
+      }
+    ],
+    "reference": {
+      "optimal": {
+        "route": [
+          "Cửa hàng Tạp Hóa",
+          "Chợ Cá Bến",
+          "Chợ Vườn",
+          "Chợ Thịt Phố",
+          "Siêu thị Mini"
+        ],
+        "distance_km": 23.86
+      },
+      "greedy": {
+        "route": [
+          "Cửa hàng Tạp Hóa",
+          "Chợ Sáng",
+          "Chợ Thịt Phố",
+          "Siêu thị Mini",
+          "Chợ Vườn",
+          "Chợ Cá Bến"
+        ],
+        "distance_km": 26.09
+      },
+      "astar_h_admissible": {
+        "route": [
+          "Cửa hàng Tạp Hóa",
+          "Chợ Cá Bến",
+          "Chợ Vườn",
+          "Chợ Thịt Phố",
+          "Siêu thị Mini"
+        ],
+        "distance_km": 23.86,
+        "expanded_nodes": 30
+      },
+      "astar_h_sum": {
+        "route": [
+          "Siêu thị Mega",
+          "Chợ Đồi",
+          "Chợ Cá Bến"
+        ],
+        "distance_km": 31.7,
+        "expanded_nodes": 5
+      }
+    }
+  },
+  "input4": {
+    "description": "Bẫy heuristic (lớn): 12 nơi, 18 nguyên liệu (Greedy = tối ưu, A* với h_sum kém hơn cả Greedy)",
+    "start": {
+      "name": "Nhà",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    "return_to_start": true,
+    "shopping_list": [
+      "Thịt heo",
+      "Thịt bò",
+      "Thịt gà",
+      "Cá",
+      "Tôm",
+      "Rau muống",
+      "Cà chua",
+      "Hành tây",
+      "Bắp cải",
+      "Cà rốt",
+      "Khoai tây",
+      "Trứng",
+      "Gạo",
+      "Nước mắm",
+      "Dầu ăn",
+      "Đường",
+      "Muối",
+      "Sữa"
+    ],
+    "markets": [
+      {
+        "name": "Chợ Rau Xanh",
+        "pos": [
+          4,
+          5
+        ],
+        "items": [
+          "Rau muống",
+          "Cà chua",
+          "Bắp cải",
+          "Cà rốt"
+        ]
+      },
+      {
+        "name": "Chợ Thịt Phố",
+        "pos": [
+          4,
+          4
+        ],
+        "items": [
+          "Thịt heo",
+          "Thịt bò",
+          "Thịt gà"
+        ]
+      },
+      {
+        "name": "Chợ Hải Sản",
+        "pos": [
+          5,
+          2
+        ],
+        "items": [
+          "Cá",
+          "Tôm",
+          "Nước mắm"
+        ]
+      },
+      {
+        "name": "Tạp Hóa Cô Lan",
+        "pos": [
+          9,
+          7
+        ],
+        "items": [
+          "Gạo",
+          "Dầu ăn",
+          "Đường",
+          "Muối",
+          "Nước mắm"
+        ]
+      },
+      {
+        "name": "Siêu thị Sữa & Trứng",
+        "pos": [
+          0,
+          5
+        ],
+        "items": [
+          "Sữa",
+          "Trứng",
+          "Đường"
+        ]
+      },
+      {
+        "name": "Chợ Tổng Hợp",
+        "pos": [
+          6,
+          4
+        ],
+        "items": [
+          "Thịt heo",
+          "Thịt gà",
+          "Cá",
+          "Rau muống",
+          "Cà chua",
+          "Hành tây",
+          "Khoai tây",
+          "Trứng"
+        ]
+      },
+      {
+        "name": "Siêu thị Tiện Ích",
+        "pos": [
+          2,
+          1
+        ],
+        "items": [
+          "Gạo",
+          "Dầu ăn",
+          "Muối",
+          "Sữa",
+          "Trứng",
+          "Khoai tây",
+          "Hành tây"
+        ]
+      },
+      {
+        "name": "Siêu thị Mega",
+        "pos": [
+          8,
+          12
+        ],
+        "items": [
+          "Thịt heo",
+          "Thịt bò",
+          "Thịt gà",
+          "Cá",
+          "Rau muống",
+          "Cà chua",
+          "Hành tây",
+          "Bắp cải",
+          "Khoai tây",
+          "Trứng",
+          "Gạo",
+          "Nước mắm",
+          "Dầu ăn",
+          "Sữa",
+          "Muối"
+        ]
+      },
+      {
+        "name": "Chợ Nhỏ Góc Phố",
+        "pos": [
+          10,
+          8
+        ],
+        "items": [
+          "Cà rốt",
+          "Hành tây"
+        ]
+      },
+      {
+        "name": "Cửa hàng 24h",
+        "pos": [
+          5,
+          10
+        ],
+        "items": [
+          "Sữa",
+          "Trứng",
+          "Muối"
+        ]
+      },
+      {
+        "name": "Chợ Cầu Vồng",
+        "pos": [
+          8,
+          9
+        ],
+        "items": [
+          "Cá",
+          "Gạo",
+          "Khoai tây"
+        ]
+      },
+      {
+        "name": "Chợ Làng",
+        "pos": [
+          9,
+          10
+        ],
+        "items": [
+          "Rau muống",
+          "Cà chua",
+          "Cà rốt",
+          "Hành tây"
+        ]
+      }
+    ],
+    "reference": {
+      "optimal": {
+        "route": [
+          "Siêu thị Tiện Ích",
+          "Chợ Hải Sản",
+          "Chợ Thịt Phố",
+          "Chợ Rau Xanh",
+          "Siêu thị Sữa & Trứng"
+        ],
+        "distance_km": 17.63
+      },
+      "greedy": {
+        "route": [
+          "Siêu thị Tiện Ích",
+          "Chợ Hải Sản",
+          "Chợ Thịt Phố",
+          "Chợ Rau Xanh",
+          "Siêu thị Sữa & Trứng"
+        ],
+        "distance_km": 17.63
+      },
+      "astar_h_admissible": {
+        "route": [
+          "Siêu thị Tiện Ích",
+          "Chợ Hải Sản",
+          "Chợ Thịt Phố",
+          "Chợ Rau Xanh",
+          "Siêu thị Sữa & Trứng"
+        ],
+        "distance_km": 17.63,
+        "expanded_nodes": 26
+      },
+      "astar_h_sum": {
+        "route": [
+          "Siêu thị Mega",
+          "Chợ Rau Xanh",
+          "Chợ Hải Sản",
+          "Siêu thị Sữa & Trứng"
+        ],
+        "distance_km": 36.48,
+        "expanded_nodes": 6
+      }
+    }
+  },
+  "input5": {
+    "description": "Bẫy heuristic (rất lớn): 15 nơi, 24 nguyên liệu (tối ưu < A* h_sum < Greedy)",
+    "start": {
+      "name": "Nhà",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    "return_to_start": true,
+    "shopping_list": [
+      "Thịt heo",
+      "Thịt bò",
+      "Thịt gà",
+      "Cá",
+      "Tôm",
+      "Mực",
+      "Rau muống",
+      "Cải ngọt",
+      "Cà chua",
+      "Hành tây",
+      "Bắp cải",
+      "Cà rốt",
+      "Khoai tây",
+      "Nấm",
+      "Đậu phụ",
+      "Trứng",
+      "Gạo",
+      "Bún",
+      "Nước mắm",
+      "Dầu ăn",
+      "Đường",
+      "Muối",
+      "Sữa",
+      "Bột mì"
+    ],
+    "markets": [
+      {
+        "name": "Chợ Làng",
+        "pos": [
+          6,
+          12
+        ],
+        "items": [
+          "Rau muống",
+          "Cải ngọt",
+          "Cà chua",
+          "Cà rốt"
+        ]
+      },
+      {
+        "name": "Chợ Thịt Phố",
+        "pos": [
+          8,
+          1
+        ],
+        "items": [
+          "Thịt heo",
+          "Thịt bò",
+          "Thịt gà",
+          "Hành tây"
+        ]
+      },
+      {
+        "name": "Chợ Cá Bến",
+        "pos": [
+          6,
+          1
+        ],
+        "items": [
+          "Cá",
+          "Tôm",
+          "Mực",
+          "Nước mắm"
+        ]
+      },
+      {
+        "name": "Tạp Hóa Cô Lan",
+        "pos": [
+          10,
+          15
+        ],
+        "items": [
+          "Gạo",
+          "Bún",
+          "Nước mắm",
+          "Dầu ăn",
+          "Đường",
+          "Muối"
+        ]
+      },
+      {
+        "name": "Chợ Xanh",
+        "pos": [
+          5,
+          3
+        ],
+        "items": [
+          "Rau muống",
+          "Cải ngọt",
+          "Bắp cải",
+          "Cà rốt",
+          "Hành tây",
+          "Nấm"
+        ]
+      },
+      {
+        "name": "Siêu thị An Bình",
+        "pos": [
+          10,
+          0
+        ],
+        "items": [
+          "Trứng",
+          "Sữa",
+          "Gạo",
+          "Dầu ăn",
+          "Bột mì",
+          "Đường"
+        ]
+      },
+      {
+        "name": "Chợ Đậu & Nấm",
+        "pos": [
+          4,
+          4
+        ],
+        "items": [
+          "Đậu phụ",
+          "Nấm",
+          "Bún",
+          "Cải ngọt"
+        ]
+      },
+      {
+        "name": "Siêu thị Hoàng Gia",
+        "pos": [
+          6,
+          5
+        ],
+        "items": [
+          "Thịt heo",
+          "Thịt gà",
+          "Cá",
+          "Tôm",
+          "Rau muống",
+          "Cải ngọt",
+          "Cà chua",
+          "Hành tây",
+          "Bắp cải",
+          "Khoai tây",
+          "Trứng",
+          "Gạo",
+          "Dầu ăn",
+          "Sữa",
+          "Đường",
+          "Muối",
+          "Bột mì",
+          "Bún"
+        ]
+      },
+      {
+        "name": "Siêu thị Mega",
+        "pos": [
+          15,
+          2
+        ],
+        "items": [
+          "Thịt bò",
+          "Mực",
+          "Nấm",
+          "Đậu phụ",
+          "Nước mắm",
+          "Thịt heo",
+          "Trứng",
+          "Gạo",
+          "Dầu ăn",
+          "Sữa",
+          "Khoai tây",
+          "Cà rốt"
+        ]
+      },
+      {
+        "name": "Chợ Đêm",
+        "pos": [
+          5,
+          6
+        ],
+        "items": [
+          "Trứng",
+          "Sữa",
+          "Thịt gà",
+          "Khoai tây"
+        ]
+      },
+      {
+        "name": "Chợ Đồi",
+        "pos": [
+          15,
+          9
+        ],
+        "items": [
+          "Cà chua",
+          "Hành tây",
+          "Trứng",
+          "Thịt gà",
+          "Khoai tây"
+        ]
+      },
+      {
+        "name": "Cửa hàng 24h",
+        "pos": [
+          10,
+          9
+        ],
+        "items": [
+          "Sữa",
+          "Trứng",
+          "Dầu ăn",
+          "Muối"
+        ]
+      },
+      {
+        "name": "Chợ Hải Sản Đông",
+        "pos": [
+          14,
+          1
+        ],
+        "items": [
+          "Tôm",
+          "Mực",
+          "Cá",
+          "Nước mắm"
+        ]
+      },
+      {
+        "name": "Siêu thị Mini",
+        "pos": [
+          12,
+          13
+        ],
+        "items": [
+          "Bột mì",
+          "Đường",
+          "Sữa",
+          "Trứng"
+        ]
+      },
+      {
+        "name": "Chợ Cầu",
+        "pos": [
+          5,
+          1
+        ],
+        "items": [
+          "Khoai tây",
+          "Cà rốt",
+          "Bắp cải",
+          "Đậu phụ"
+        ]
+      }
+    ],
+    "reference": {
+      "optimal": {
+        "route": [
+          "Chợ Cầu",
+          "Chợ Cá Bến",
+          "Chợ Thịt Phố",
+          "Siêu thị Hoàng Gia",
+          "Chợ Đậu & Nấm"
+        ],
+        "distance_km": 20.46
+      },
+      "greedy": {
+        "route": [
+          "Chợ Cầu",
+          "Chợ Cá Bến",
+          "Chợ Thịt Phố",
+          "Siêu thị An Bình",
+          "Siêu thị Mega",
+          "Chợ Đồi",
+          "Cửa hàng 24h",
+          "Chợ Làng",
+          "Tạp Hóa Cô Lan"
+        ],
+        "distance_km": 55.75
+      },
+      "astar_h_admissible": {
+        "route": [
+          "Chợ Cầu",
+          "Chợ Cá Bến",
+          "Chợ Thịt Phố",
+          "Siêu thị Hoàng Gia",
+          "Chợ Đậu & Nấm"
+        ],
+        "distance_km": 20.46,
+        "expanded_nodes": 25
+      },
+      "astar_h_sum": {
+        "route": [
+          "Siêu thị Hoàng Gia",
+          "Siêu thị Mega"
+        ],
+        "distance_km": 32.43,
+        "expanded_nodes": 4
+      }
+    }
+  }
+}
