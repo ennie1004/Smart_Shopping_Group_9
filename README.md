@@ -21,14 +21,13 @@ Each market/supermarket sells some of the ingredients. The project compares a **
 |---|---|
 | `markets_input.json` | The 5 inputs, plus reference results for checking your own code |
 | `greedy_astar.py` | Greedy and A* implementations; `run()` prints time, peak memory and optimality |
-| `greedy_improve.py` | Improves Greedy (remove redundant stops, 2-opt, multi-start) to shrink the gap to optimal |
 | `visualize.py` | matplotlib: map of routes, A* step by step, Greedy step by step |
-| `visualize_5_inputs.html` | Interactive map of the 5 inputs (open in a browser, no internet needed) |
-| `input_greedy_astar.docx` | Word document with inputs 1-3 |
-| `bang_input4_input5.docx` | Word tables for inputs 4 and 5 |
-| `input_greedy_astar_5input.docx` | Word document with 5 inputs. **Outdated:** it still describes the old, smaller inputs 4 and 5 |
+| `trace_astar_input4.gif` | Animation of A* running step by step on input 4 |
+| `trace_greedy_input4.gif` | Animation of Greedy running step by step on input 4 |
+| `Group 9 - Topic 5_ Smart Shopping - Report.pdf` | Written report |
+| `.gitignore` | Files Git should ignore (`__pycache__/`, `out_dir/`, `*.pyc`) |
 
-Keep the `.py` files and `markets_input.json` in the same folder.
+Keep `greedy_astar.py`, `visualize.py` and `markets_input.json` in the same folder.
 
 ## Requirements
 
